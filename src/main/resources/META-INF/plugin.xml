@@ -1,0 +1,65 @@
+<!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
+<idea-plugin>
+
+    <id>app.ctrlyati.plugin.motivate.randommotivation</id>
+    <name>RandomMotivation</name>
+    <vendor email="ctrlyati@gmail.com" url="https://www.ctrlyati.app">Ctrlyati</vendor>
+
+    <description><![CDATA[
+    <h1>Random Motivation Plugin</h1>
+    <em>most useful plugin ever</em>
+  ]]></description>
+
+    <depends>com.intellij.modules.platform</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+
+        <applicationService
+                serviceImplementation="app.ctrlyati.plugin.motivate.randommotivation.service.MainService"/>
+
+
+        <applicationConfigurable
+                instance="app.ctrlyati.plugin.motivate.randommotivation.setting.SettingConfigurable"
+                id="app.ctrlyati.plugin.motivate.randommotivation.setting.SettingConfigurable"
+                displayName="Random Motivation Setting"/>
+
+    </extensions>
+
+    <actions>
+        <group id="app.ctrlyati.plugin.motivate.randommotivation.action.MainGroupAction"
+               class="app.ctrlyati.plugin.motivate.randommotivation.action.MainGroupAction"
+               text="Random Motivation"
+               description="A group for Random Motivation plugin"
+               icon="/motivate.svg"
+               popup="true">
+            <add-to-group group-id="ToolsMenu" anchor="last"/>
+
+            <separator />
+            <action id="app.ctrlyati.plugin.motivate.randommotivation.action.MotivateHintAction"
+                    class="app.ctrlyati.plugin.motivate.randommotivation.action.MotivateHintAction"
+                    text="Get Inspired as Hint"
+                    description="Inspired me with hint message"
+                    icon="AllIcons.Actions.IntentionBulb">
+                <keyboard-shortcut first-keystroke="control alt A" keymap="$default" second-keystroke="A" />
+            </action>
+
+            <action id="app.ctrlyati.plugin.motivate.randommotivation.action.MotivateAction"
+                    class="app.ctrlyati.plugin.motivate.randommotivation.action.MotivateAction"
+                    text="Get Inspired as Comment"
+                    description="Inspired me with comment."
+                    icon="AllIcons.Actions.IntentionBulb">
+                <keyboard-shortcut first-keystroke="control alt A" keymap="$default" second-keystroke="V" />
+            </action>
+
+            <action id="app.ctrlyati.plugin.motivate.randommotivation.action.AddMotivateAction"
+                    class="app.ctrlyati.plugin.motivate.randommotivation.action.AddMotivateAction"
+                    text="Add Motivation"
+                    description="Add motivation message to the storage"
+                    icon="AllIcons.Actions.AddList">
+                <keyboard-shortcut first-keystroke="control alt A" keymap="$default" second-keystroke="C" />
+            </action>
+            <separator />
+        </group>
+    </actions>
+
+</idea-plugin>
